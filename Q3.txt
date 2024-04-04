@@ -1,0 +1,33 @@
+Q3.
+import java.util.HashMap;
+
+public class WordCountUsingHashMap {
+    public static void main(String[] args) {
+        String text = "Hello world! This is a sample text. Hello world!";
+
+        HashMap<String, Integer> wordCountMap = new HashMap<>();
+
+        // Split the text into words
+        String[] words = text.split("\\s+");
+
+        // Count the frequency of each word and store in the HashMap
+        for (String word : words) {
+            // Remove punctuation marks if any
+            word = word.replaceAll("[^a-zA-Z0-9]", "");
+
+            // Convert to lowercase for case-insensitive counting
+            word = word.toLowerCase();
+
+            // Update word count in the HashMap
+            if (!word.isEmpty()) {
+                wordCountMap.put(word, wordCountMap.getOrDefault(word, 0) + 1);
+            }
+        }
+
+        // Display the word count
+        System.out.println("Word count:");
+        for (String word : wordCountMap.keySet()) {
+            System.out.println(word + ": " + wordCountMap.get(word));
+        }
+    }
+}
